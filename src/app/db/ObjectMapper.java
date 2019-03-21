@@ -27,6 +27,10 @@ public class ObjectMapper<T> {
     }
 
     public T map(Map<String, Object> row) {
+        if (row.isEmpty()) {
+            return null;
+        }
+
         try {
             T dto = (T) clazz.getConstructor().newInstance();
             for (Map.Entry<String, Object> entity : row.entrySet()) {
